@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="sweetalert.css">
+
+	<title></title>
+</head>
+<body>
+
+
+<div class="row">
+		<div class="col-sm-2 text-center">
+          <p><button class="btn btn-primary sweet1" >Simple Example</button></p>
+        </div>
+
+        <div class="col-sm-2 text-center">
+          <p><button class="btn btn-primary sweet2" >A title with text</button></p>
+        </div>
+
+
+        <div class="col-sm-2 text-center">
+          <p><button class="btn btn-primary sweet3" >A success message</button></p>
+        </div>
+
+         <div class="col-sm-2 text-center">
+         <p><button class="btn btn-primary sweet4" >A success message with cancel button</button></p>
+        </div>
+        <br>
+        <br>
+        <br>
+
+         <div class="col-sm-2 text-center">
+         <p><button class="btn btn-primary sweet5" >A warning message, with a function attached to the "Confirm" button</button></p>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="col-sm-2 text-center">
+        <p><button class="btn btn-primary sweet6" >Cancel Option</button></p>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+
+
+         <div class="col-sm-2 text-center">
+         <p><button class="btn btn-primary sweet7" >With Timer</button></p>
+        </div>
+
+        <br>
+        <br>
+        <div class="col-sm-2 text-center">
+          <p><button class="btn btn-primary sweet8" >Input Parameter</button></p>
+        </div>
+        <br>
+
+          <div class="col-sm-2 text-center">
+          <p><button class="btn btn-primary sweet9" >With a loader</button></p>
+        </div>
+
+         <div class="col-sm-2 text-center">
+          <p><button class="btn btn-primary sweet10" >Custom Icon</button></p>
+        </div>
+        
+        
+
+
+	<script type="text/javascript" src="sweetalert.js"></script>
+	<script>	
+		document.querySelector('.sweet1').onclick = function(){
+        	swal("Simple Example");
+      	};
+
+      	document.querySelector('.sweet2').onclick=function(){
+      		swal({
+		      		title:"This is a title",
+		      		text:"This is a text",
+      			})
+      	};
+
+      	document.querySelector('.sweet3').onclick=function(){
+      		swal({
+		      		title:"A success message",
+		      		text:"Successfully Deleted",
+		      		type:"success",
+
+      			})
+      	};
+
+      	document.querySelector('.sweet4').onclick=function(){
+      		swal({
+		      		title:"A success message",
+		      		text:"Successfully Deleted",
+		      		type:"success",
+		      		showCancelButton:true
+				})
+      	};
+
+      	document.querySelector('.sweet5').onclick=function(){
+      		swal({
+	      		title:"A warning message, with a function attached to the Confirm button",
+	      		text:"This is a text",
+	      		type:"warning",
+	      		showCancelButton:true,
+	      		closeOnConfirm:false
+				},
+      			function(){
+  						swal("Deleted!", "Your imaginary file has been deleted.", "success");
+				  		});
+      	};
+
+      	document.querySelector('.sweet6').onclick=function(){
+      		swal({
+				  title: "Are you sure?",
+				  text: "You will not be able to recover this imaginary file!",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonClass: "btn-danger",
+				  confirmButtonText: "Yes, delete it!",
+				  cancelButtonText: "No, cancel plx!",
+				  closeOnConfirm: false,
+				  closeOnCancel: false
+				},
+				function(isConfirm) {
+  					if (isConfirm) 
+  					{
+    					swal("Deleted!", "Your imaginary file has been deleted.", "success");
+  					}
+  					else 
+  					{
+    					swal("Cancelled", "Your imaginary file is safe :)", "error");
+  					}
+				});
+      			};
+
+
+      document.querySelector('.sweet7').onclick=function()
+      {
+		swal({
+			  title: "Timer",
+			  text: "Submit to see the effect",
+			  type: "info",
+			  showCancelButton: true,
+			  closeOnConfirm: false,
+			  showLoaderOnConfirm: true
+			},
+			function () {
+  				setTimeout(function () {
+    				swal({
+				    	title:"",
+				    	text:"Data Deleted Successfully",
+				    	timer:1000});
+				  		}, 2000);
+					});
+			};
+
+
+document.querySelector('.sweet10').onclick=function()
+      {
+
+		swal({
+			  title: "Sweet!",
+			  text: "Here's a custom image.",
+			  imageUrl: 'thumbs-up.jpg'
+			});
+		};
+
+document.querySelector('.sweet8').onclick=function()
+      {
+		swal({
+			  title: "An input!",
+			  text: "Write something interesting:",
+			  type: "input",
+			  showCancelButton: true,
+			  closeOnConfirm: false,
+			  inputPlaceholder: "Write something"
+			}, 
+			function (inputValue) {
+				  if (inputValue === false) return false;
+				  if (inputValue === "") {
+				    	swal.showInputError("You need to write something!");
+    				return false
+  					}
+  					swal("Nice!", "You wrote: " + inputValue, "success");
+				});
+
+			};
+document.querySelector('.sweet9').onclick=function()
+      {
+
+		swal({
+			  title: "Ajax request example",
+			  text: "Submit to run ajax request",
+			  type: "info",
+			  showCancelButton: true,
+			  closeOnConfirm: false,
+			  showLoaderOnConfirm: true
+			}, function () {
+  				setTimeout(function () {
+    				swal("Ajax request finished!");
+  			}, 2000);
+		});
+	};
+	</script>
+</body>
+</html>
